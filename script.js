@@ -98,4 +98,54 @@ function showLocationExperience(location) {
             modal.remove();
         }
     });
-} 
+}
+
+// Dashboard Animation
+function initDashboard() {
+    const wheel = document.querySelector('.steering-wheel');
+    const speedValue = document.querySelector('.speed-value');
+    let currentSpeed = 0;
+    let wheelRotation = 0;
+    let lastScrollY = window.scrollY;
+
+    // Speedometer animation
+    function updateSpeed() {
+        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        currentSpeed = Math.min(180, Math.round(scrollPercent * 1.8)); // Max speed 180 MPH
+        speedValue.textContent = currentSpeed;
+    }
+
+    // Steering wheel animation
+    function updateWheel() {
+        const scrollDelta = window.scrollY - lastScrollY;
+        wheelRotation += scrollDelta * 0.1; // Adjust sensitivity here
+        wheel.style.transform = `translateX(-50%) rotate(${wheelRotation}deg)`;
+        lastScrollY = window.scrollY;
+    }
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Update on scroll
+    window.addEventListener('scroll', () => {
+        updateSpeed();
+        updateWheel();
+    });
+
+    // Initial update
+    updateSpeed();
+    updateWheel();
+}
+
+// Initialize dashboard when DOM is loaded
+document.addEventListener('DOMContentLoaded', initDashboard); 

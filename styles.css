@@ -1144,4 +1144,150 @@ section {
     .location-gallery {
         grid-template-columns: 1fr;
     }
+}
+
+/* Dashboard Styles */
+.dashboard-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    z-index: 2;
+}
+
+.dashboard-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(188, 0, 45, 0.3);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.speedometer {
+    text-align: center;
+    color: var(--japan-red);
+    text-shadow: 0 0 10px rgba(188, 0, 45, 0.5);
+}
+
+.speed-value {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.speed-unit {
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+.dashboard-text {
+    text-align: center;
+}
+
+.dashboard-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--japan-red);
+    text-shadow: 0 0 10px rgba(188, 0, 45, 0.5);
+}
+
+.dashboard-text .tagline {
+    font-size: 1.5rem;
+    color: var(--japan-gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.dashboard-controls {
+    display: flex;
+    gap: 2rem;
+}
+
+.control-item {
+    text-align: center;
+    color: var(--japan-red);
+    text-shadow: 0 0 10px rgba(188, 0, 45, 0.5);
+}
+
+.control-item i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.control-item span {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Steering Wheel */
+.steering-wheel {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    border: 2px solid var(--japan-red);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(188, 0, 45, 0.3);
+}
+
+.wheel-inner {
+    width: 60px;
+    height: 60px;
+    background: var(--japan-red);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(188, 0, 45, 0.5);
+}
+
+/* Neon Text Effects */
+.neon-text {
+    animation: neon 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon {
+    from {
+        text-shadow: 0 0 10px var(--japan-red),
+                     0 0 20px var(--japan-red),
+                     0 0 30px var(--japan-red);
+    }
+    to {
+        text-shadow: 0 0 20px var(--japan-red),
+                     0 0 30px var(--japan-red),
+                     0 0 40px var(--japan-red);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .dashboard-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .dashboard-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .steering-wheel {
+        width: 150px;
+        height: 150px;
+    }
+
+    .wheel-inner {
+        width: 45px;
+        height: 45px;
+    }
 } 

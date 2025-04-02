@@ -42,14 +42,33 @@
     </nav>
 
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>NY Racing Co.</h1>
-                <p class="tagline">Where Gaming Culture Meets Motorsport Innovation</p>
-                <div class="hero-buttons">
-                    <a href="#vision" class="btn btn-primary neon-pulse">Discover Our Vision</a>
-                    <a href="#investment" class="btn btn-secondary">Join the Global Movement</a>
+        <div class="dashboard-overlay">
+            <div class="dashboard-content">
+                <div class="speedometer">
+                    <div class="speed-value">0</div>
+                    <div class="speed-unit">MPH</div>
                 </div>
+                <div class="dashboard-text">
+                    <h1 class="neon-text">NY Racing Co.</h1>
+                    <p class="tagline neon-pulse">Where Gaming Culture Meets Motorsport Innovation</p>
+                </div>
+                <div class="dashboard-controls">
+                    <div class="control-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>RPM</span>
+                    </div>
+                    <div class="control-item">
+                        <i class="fas fa-gas-pump"></i>
+                        <span>FUEL</span>
+                    </div>
+                    <div class="control-item">
+                        <i class="fas fa-temperature-high"></i>
+                        <span>TEMP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="steering-wheel">
+                <div class="wheel-inner"></div>
             </div>
         </div>
         <video autoplay muted loop playsinline>
