@@ -10,6 +10,12 @@
     --accent-blue: #00FFFF;
     --accent-purple: #FF00FF;
     
+    /* Japanese-inspired Colors */
+    --japan-red: #BC002D;
+    --japan-black: #1A1A1A;
+    --japan-white: #FFFFFF;
+    --japan-gold: #FFD700;
+    
     /* UI Colors */
     --ui-dark: #1A1A1A;
     --ui-light: #F5F5F5;
@@ -19,6 +25,7 @@
     --gradient-red: linear-gradient(45deg, #FF0000, #FF6B6B);
     --gradient-dark: linear-gradient(to bottom, #000000, #1A1A1A);
     --gradient-future: linear-gradient(135deg, #FF0000, #FF00FF);
+    --gradient-japan: linear-gradient(135deg, #BC002D, #FFD700);
     
     /* Shadows */
     --shadow-neon: 0 0 10px rgba(255, 0, 0, 0.5),
@@ -55,10 +62,23 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 4.5rem;
     line-height: 1.1;
-    background: var(--gradient-future);
+    background: var(--gradient-japan);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: var(--shadow-neon);
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--japan-red);
+    box-shadow: var(--shadow-neon);
 }
 
 h2 {
@@ -94,10 +114,10 @@ p {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
     padding: 1rem var(--container-padding);
-    border-bottom: 2px solid var(--primary-red);
+    border-bottom: 2px solid var(--japan-red);
     box-shadow: var(--shadow-neon);
     transition: all 0.3s ease;
 }
@@ -126,22 +146,27 @@ p {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     position: relative;
+    padding: 0.5rem 1rem;
     transition: color 0.3s ease;
 }
 
-.nav-links a::after {
+.nav-links a::before {
     content: '';
     position: absolute;
-    bottom: -2px;
+    top: 0;
     left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-red);
-    transition: width 0.3s ease;
+    width: 100%;
+    height: 100%;
+    background: var(--japan-red);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    z-index: -1;
 }
 
-.nav-links a:hover::after {
-    width: 100%;
+.nav-links a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .cta-button {
@@ -165,6 +190,17 @@ p {
     text-align: center;
     overflow: hidden;
     padding: 0 var(--container-padding);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(188,0,45,0.3));
+    z-index: 1;
 }
 
 .hero-background {
@@ -216,6 +252,8 @@ p {
     margin: 0 auto;
     text-align: center;
     padding: 2rem 0;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content h1 {
@@ -299,22 +337,22 @@ section {
 
 .feature {
     background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(188, 0, 45, 0.2);
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(255, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 .feature:hover {
     transform: translateY(-5px);
-    border-color: var(--primary-red);
+    border-color: var(--japan-red);
     box-shadow: var(--shadow-neon);
 }
 
 .feature i {
     font-size: 2.5rem;
-    color: var(--primary-red);
+    color: var(--japan-red);
     margin-bottom: 1rem;
 }
 
@@ -381,11 +419,17 @@ section {
 }
 
 .space-card {
-    padding: 2rem;
-    border-radius: 1rem;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(188, 0, 45, 0.2);
+    padding: 2rem;
+    border-radius: 8px;
     transition: all 0.3s ease;
+}
+
+.space-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--japan-red);
+    box-shadow: var(--shadow-neon);
 }
 
 .space-card img {
@@ -495,6 +539,10 @@ section {
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(188, 0, 45, 0.2);
+    padding: 2rem;
+    border-radius: 8px;
 }
 
 .form-group {
@@ -505,9 +553,8 @@ section {
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 1rem;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 0, 0, 0.2);
+    border: 1px solid rgba(188, 0, 45, 0.2);
     border-radius: 4px;
     color: var(--primary-white);
     font-family: inherit;
@@ -518,7 +565,7 @@ section {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--primary-red);
+    border-color: var(--japan-red);
     box-shadow: var(--shadow-neon);
 }
 
@@ -750,4 +797,103 @@ section {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border-radius: 1rem;
+}
+
+/* Enhanced Buttons */
+.btn-primary {
+    background: var(--japan-red);
+    color: var(--primary-white);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-red);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-neon);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-white);
+    border: 2px solid var(--japan-red);
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--japan-red);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-neon);
+}
+
+/* Expansion Map */
+.expansion-map {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.location-markers {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.marker {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: rgba(188, 0, 45, 0.2);
+    border: 2px solid var(--japan-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.marker:hover {
+    transform: scale(1.1);
+    background: var(--japan-red);
+    box-shadow: var(--shadow-neon);
+}
+
+.marker span {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: var(--primary-white);
+    font-size: 0.9rem;
+}
+
+/* Enhanced Investment Stats */
+.stat {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(188, 0, 45, 0.2);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat:hover {
+    transform: translateY(-5px);
+    border-color: var(--japan-red);
+    box-shadow: var(--shadow-neon);
+}
+
+.stat h3 {
+    color: var(--japan-red);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 } 
