@@ -3,18 +3,6 @@
 import { debounce } from '../utils/helpers.js';
 
 export function initNavigation() {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (mobileMenu && navLinks) {
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-    }
-}
-
-export const initNavigation = () => {
     const nav = document.querySelector('.main-nav');
     const mobileMenuButton = document.querySelector('.mobile-menu');
     const navLinks = document.querySelector('.nav-links');
@@ -93,4 +81,4 @@ export const initNavigation = () => {
     };
 
     window.addEventListener('scroll', debounce(setActiveNavItem, 100));
-}; 
+} 

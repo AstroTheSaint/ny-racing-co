@@ -1,14 +1,14 @@
 // Main JavaScript file for Brooklyn Racing Co.
 
 // Import components
-import { initNavigation } from './components/navigation.js';
-import { initHero } from './components/hero.js';
-import { initSpaces } from './components/spaces.js';
-import { initInvestment } from './components/investment.js';
-import { initContact } from './components/contact.js';
+import { initNavigation } from '@/components/navigation.js';
+import { initHero } from '@/components/hero.js';
+import { initSpaces } from '@/components/spaces.js';
+import { initInvestment } from '@/components/investment.js';
+import { initContact } from '@/components/contact.js';
 
 // Utility functions
-import { debounce, smoothScroll, isInViewport } from './utils/helpers.js';
+import { debounce, smoothScroll, isInViewport } from '@/utils/helpers.js';
 
 // Initialize components when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
