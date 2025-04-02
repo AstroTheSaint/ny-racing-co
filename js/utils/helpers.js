@@ -6,7 +6,7 @@
  * @param {number} wait - The number of milliseconds to delay
  * @returns {Function} - The debounced function
  */
-export const debounce = (func, wait) => {
+export function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
         const later = () => {
@@ -16,15 +16,15 @@ export const debounce = (func, wait) => {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
-};
+}
 
 /**
  * Smooth scroll function for anchor links
  * @param {Event} e - The click event
  */
-export const smoothScroll = (e) => {
+export function smoothScroll(e) {
     e.preventDefault();
-    const targetId = e.currentTarget.getAttribute('href');
+    const targetId = this.getAttribute('href');
     const targetElement = document.querySelector(targetId);
     
     if (targetElement) {
@@ -33,7 +33,7 @@ export const smoothScroll = (e) => {
             block: 'start'
         });
     }
-};
+}
 
 /**
  * Format currency with proper locale
@@ -52,7 +52,7 @@ export const formatCurrency = (amount) => {
  * @param {Element} element - The element to check
  * @returns {boolean} - Whether the element is in viewport
  */
-export const isInViewport = (element) => {
+export function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (
         rect.top >= 0 &&
@@ -60,7 +60,7 @@ export const isInViewport = (element) => {
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
-};
+}
 
 /**
  * Add loading state to element
