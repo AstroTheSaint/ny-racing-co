@@ -1,76 +1,41 @@
-# Brooklyn Racing Co. Website
+# NY Racing Co.
 
-A modern, responsive website showcasing Brooklyn Racing Co. and the HIRO Universe. This website serves as a digital hub for the motorsport culture venue, featuring information about spaces, events, and investment opportunities.
+A modern, immersive motorsport experience in New York City. Where the art of racing meets modern hospitality.
 
 ## Features
 
-- Modern, responsive design
-- Interactive UI elements
-- Character showcase
-- Space visualization
-- Investment information
-- Contact form
-- Mobile-first approach
-
-## Tech Stack
-
-- HTML5
-- CSS3 (with CSS Grid and Flexbox)
-- JavaScript
-- Font Awesome Icons
-- Space Grotesk Font
+- Daily Café & Nightclub Experience
+- HIRO Universe Integration
+- Exclusive Member Events
+- Investment Opportunities
+- Motorsport Culture Hub
 
 ## Getting Started
 
-### Prerequisites
-
-- A modern web browser
-- Basic understanding of HTML/CSS/JavaScript
-
-### Installation
-
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/brooklyn-racing-co.git
+git clone https://github.com/yourusername/ny-racing-co.git
 ```
 
-2. Navigate to the project directory:
+2. Open the project:
 ```bash
-cd brooklyn-racing-co
+cd ny-racing-co
 ```
 
-3. Open `index.html` in your web browser or use a local server.
+3. Open `index.html` in your browser to view the website
 
-## Project Structure
+## Development
 
-```
-brooklyn-racing-co/
-├── assets/
-│   ├── images/
-│   │   ├── characters/
-│   │   ├── spaces/
-│   │   └── design/
-│   └── videos/
-├── index.html
-├── styles.css
-├── script.js
-└── README.md
-```
+The project is built with vanilla HTML, CSS, and JavaScript for simplicity and performance. No build process is required.
 
-## Contributing
+## Deployment
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+This project is deployed on Vercel. Any push to the main branch will automatically trigger a new deployment.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License
 
-## Acknowledgments
+## About
 
-- Font Awesome for icons
-- Google Fonts for Space Grotesk font
-- All contributors and supporters of Brooklyn Racing Co. 
+ny-racing-co.vercel.app 
