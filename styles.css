@@ -189,18 +189,7 @@ p {
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    padding: 0 var(--container-padding);
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(188,0,45,0.3));
-    z-index: 1;
+    padding-top: 80px; /* Account for fixed nav */
 }
 
 .hero-background {
@@ -209,7 +198,24 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 1;
+}
+
+.hero-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+video::-webkit-media-controls {
+    display: none !important;
 }
 
 .hero-background::before {
@@ -221,16 +227,6 @@ p {
     height: 100%;
     background: var(--gradient-dark);
     opacity: 0.8;
-}
-
-.hero-background video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background-color: #333333;
 }
 
 .hero-background video[src$=".svg"] {
@@ -1148,17 +1144,18 @@ section {
 
 /* Dashboard Styles */
 .dashboard-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 2rem;
     z-index: 2;
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.8) 100%);
 }
 
 .dashboard-content {
@@ -1166,35 +1163,41 @@ section {
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(188, 0, 45, 0.3);
     border-radius: 1rem;
     backdrop-filter: blur(10px);
+    margin-top: 2rem;
 }
 
 .speedometer {
     text-align: center;
     color: var(--japan-red);
     text-shadow: 0 0 10px rgba(188, 0, 45, 0.5);
+    min-width: 150px;
 }
 
 .speed-value {
     font-size: 4rem;
     font-weight: 700;
     line-height: 1;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .speed-unit {
     font-size: 1.5rem;
     opacity: 0.8;
+    margin-top: 0.5rem;
 }
 
 .dashboard-text {
     text-align: center;
+    padding: 0 2rem;
+    flex-grow: 1;
 }
 
 .dashboard-text h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
     color: var(--japan-red);
     text-shadow: 0 0 10px rgba(188, 0, 45, 0.5);
@@ -1204,11 +1207,13 @@ section {
     font-size: 1.5rem;
     color: var(--japan-gold);
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    margin: 0;
 }
 
 .dashboard-controls {
     display: flex;
     gap: 2rem;
+    min-width: 150px;
 }
 
 .control-item {
@@ -1223,24 +1228,24 @@ section {
 }
 
 .control-item span {
-    font-size: 1rem;
+    font-size: 0.9rem;
     opacity: 0.8;
+    display: block;
 }
 
 /* Steering Wheel */
 .steering-wheel {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     width: 200px;
     height: 200px;
+    margin: 2rem auto;
     border: 2px solid var(--japan-red);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 20px rgba(188, 0, 45, 0.3);
+    transition: transform 0.1s ease-out;
 }
 
 .wheel-inner {
@@ -1274,6 +1279,19 @@ section {
     .dashboard-content {
         flex-direction: column;
         gap: 2rem;
+        padding: 1.5rem;
+    }
+
+    .dashboard-text {
+        padding: 1rem 0;
+    }
+
+    .dashboard-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .dashboard-text .tagline {
+        font-size: 1.2rem;
     }
 
     .dashboard-controls {
@@ -1284,10 +1302,19 @@ section {
     .steering-wheel {
         width: 150px;
         height: 150px;
+        margin: 1rem auto;
     }
 
     .wheel-inner {
         width: 45px;
         height: 45px;
+    }
+
+    .speedometer {
+        min-width: auto;
+    }
+
+    .speed-value {
+        font-size: 3rem;
     }
 } 

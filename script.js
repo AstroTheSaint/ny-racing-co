@@ -107,20 +107,31 @@ function initDashboard() {
     let currentSpeed = 0;
     let wheelRotation = 0;
     let lastScrollY = window.scrollY;
+    let ticking = false;
 
-    // Speedometer animation
+    // Speedometer animation with smooth transition
     function updateSpeed() {
         const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        currentSpeed = Math.min(180, Math.round(scrollPercent * 1.8)); // Max speed 180 MPH
-        speedValue.textContent = currentSpeed;
+        const targetSpeed = Math.min(180, Math.round(scrollPercent * 1.8)); // Max speed 180 MPH
+        
+        // Smooth speed transition
+        const speedDiff = targetSpeed - currentSpeed;
+        currentSpeed += speedDiff * 0.1;
+        speedValue.textContent = Math.round(currentSpeed);
     }
 
-    // Steering wheel animation
+    // Steering wheel animation with damping
     function updateWheel() {
         const scrollDelta = window.scrollY - lastScrollY;
-        wheelRotation += scrollDelta * 0.1; // Adjust sensitivity here
-        wheel.style.transform = `translateX(-50%) rotate(${wheelRotation}deg)`;
+        const sensitivity = 0.05; // Reduced sensitivity
+        const damping = 0.92; // Damping factor
+        
+        // Apply damping to wheel rotation
+        wheelRotation = (wheelRotation * damping) + (scrollDelta * sensitivity);
+        wheel.style.transform = `rotate(${wheelRotation}deg)`;
+        
         lastScrollY = window.scrollY;
+        ticking = false;
     }
 
     // Smooth scroll for navigation
@@ -136,10 +147,15 @@ function initDashboard() {
         });
     });
 
-    // Update on scroll
+    // Throttled scroll handler
     window.addEventListener('scroll', () => {
-        updateSpeed();
-        updateWheel();
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateSpeed();
+                updateWheel();
+            });
+            ticking = true;
+        }
     });
 
     // Initial update
@@ -148,4 +164,19 @@ function initDashboard() {
 }
 
 // Initialize dashboard when DOM is loaded
-document.addEventListener('DOMContentLoaded', initDashboard); 
+document.addEventListener('DOMContentLoaded', () => {
+    initDashboard();
+    
+    // Fallback for video
+    const video = document.querySelector('.hero-background video');
+    const fallbackImg = document.querySelector('.hero-background img');
+    
+    if (video) {
+        video.addEventListener('error', () => {
+            video.style.display = 'none';
+            if (fallbackImg) {
+                fallbackImg.style.display = 'block';
+            }
+        });
+    }
+}); 
