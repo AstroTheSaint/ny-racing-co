@@ -1,0 +1,20 @@
+{
+  "name": "brooklyn-racing-co",
+  "version": "1.0.0",
+  "description": "Modern motorsport culture venue website",
+  "main": "js/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "locomotive-scroll": "^5.0.0-beta.11"
+  },
+  "devDependencies": {
+    "vite": "^5.1.0",
+    "sass": "^1.70.0"
+  }
+} 
