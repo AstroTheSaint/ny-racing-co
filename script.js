@@ -28,7 +28,7 @@ function showLocationExperience(location) {
                         <p>State-of-the-art racing facility</p>
                     </div>
                     <div class="gallery-item">
-                        <img src="/assets/images/placeholder.svg" alt="Hero Bar">
+                        <img src="/assets/images/placeholder.svg" alt="HIRO Bar">
                         <p>Exclusive speakeasy for first adopters</p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ function showLocationExperience(location) {
                     <ul>
                         <li>Professional racing simulators</li>
                         <li>Co-working space for innovators</li>
-                        <li>Exclusive Hero Bar</li>
+                        <li>Exclusive HIRO Bar</li>
                         <li>High-fidelity listening room</li>
                     </ul>
                 </div>
@@ -67,7 +67,7 @@ function showLocationExperience(location) {
                     <ul>
                         <li>Professional racing simulators</li>
                         <li>Co-working space for innovators</li>
-                        <li>Exclusive Hero Bar</li>
+                        <li>Exclusive HIRO Bar</li>
                         <li>High-fidelity listening room</li>
                     </ul>
                     <div class="hotel-benefits">
